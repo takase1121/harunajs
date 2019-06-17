@@ -190,7 +190,7 @@ class Haruna {
             }
             const user = await this.store.get(req.query.id)
             this.log(`[Notice] Checked Vote for user_id ${req.query.id}. Time Left: ${user ? `${((user.time - Date.now()) / 1000 / 60 / 60).toFixed(1)} hr(s).` : 'Not in Database.'}`)
-            return req.headers.checkWeekend ? (user && user.isWeekend) : !!user
+            return req.query.weekend ? (user && user.isWeekend) : !!user
         } catch (error) {
             console.error(error)
             res.code(500)

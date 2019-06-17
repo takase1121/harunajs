@@ -13,7 +13,7 @@ This API / webhook handler is ~~oversimplified~~ simple to use. As long as you c
 
 > Fast and reliable.
 
-> Stand alone process that dont interfere with your bot.
+> Standalone and does not require the bot to be running on the same process.
 
 > Automatic Management of Votes, haha yes you don't even need to do anything other than to configure this.
 
@@ -30,6 +30,7 @@ This API / webhook handler is ~~oversimplified~~ simple to use. As long as you c
 
 ### Scroll Down at the bottom for Installation, API Wrapper, and Support for using this.
 
+
 ## API Endpoints
 ### `POST` /vote
 This is the one that you use for DBL, this is where DBL will send the votes from your bot.
@@ -42,10 +43,10 @@ This is the one that you use for DBL, this is where DBL will send the votes from
 To check if someone voted or not.
 ```
 Query String:
-  <String> id: 'user_id'
+  <String> id: The user ID
+  <Boolean> weekend: (Optional) Check if vote multiplier on this user is enabled (weekend special)
 HTTP Headers:
-  <String> authorization - Authorization key
-  <Boolean> checkWeekend - (Optional) CHeck if vote multiplier on this user is enabled (weekend special)
+  <String> authorization: Authorization key
 Return value:
   <Boolean> - `true` if user voted or vote multiplier is enabled, `false` if user did not vote.
 ```
@@ -54,18 +55,21 @@ Return value:
 To check how long the user will stay in database.
 ```
 Query String:
-  <String> id: 'user_id'
+  <String> id: The user ID
 HTTP Headers:
   <String> authorization - Authorization key
 Return value:
   <Number|Boolean> - The duration of how long the user will be in cache (in ms), `false` if the user haven't voted.
 ```
 
+
 ## Some Documentation?
 [Code Documentation](https://deivu.github.io/Haruna?api)
 
+
 ## Example Code in starting the API
 Check [`server.js`](https://github.com/deivu/haruna/blob/master/server.js)
+
 
 ## API Wrapper?
 Check [`HarunaRequest.js`](https://github.com/Deivu/Haruna/blob/master/wrapper/HarunaRequest.js)
@@ -91,6 +95,7 @@ Step 4: [`HarunaRequest.js`](https://github.com/Deivu/Haruna/blob/master/wrapper
 **We provide support for usage of this API in our Official Server [in HERE](https://discordapp.com/invite/FVqbtGu)**
 
 Ask on **#Bot-Support** channel and make sure you indicate support for this API.
+
 
 ## Notes
 * You might want to run Haruna with [`pm2`](http://pm2.keymetrics.io/) or native services so any unexpected restarts will be handled and better logging
